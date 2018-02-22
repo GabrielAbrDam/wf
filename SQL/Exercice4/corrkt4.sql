@@ -1,55 +1,6 @@
-CREATE TABLE Person (
-  id            int(10) NOT NULL AUTO_INCREMENT, 
-  firstname     varchar(255) NOT NULL, 
-  lastname      varchar(255) NOT NULL, 
-  date_of_birth date, 
-  PRIMARY KEY (id), 
-  UNIQUE INDEX (id)
-) engine=InnoDB;
 
-CREATE TABLE Address (
-  id              int(10) NOT NULL AUTO_INCREMENT, 
-  address_field_1 varchar(255) NOT NULL, 
-  address_field_2 varchar(255), 
-  address_field_3 varchar(255), 
-  Townid          int(10) NOT NULL, 
-  PRIMARY KEY (id), 
-  UNIQUE INDEX (id)
-) engine=InnoDB;
-
-CREATE TABLE person_address (
-  Personid       int(10) NOT NULL, 
-  Addressid      int(10) NOT NULL, 
-  Address_typeid int(10) NOT NULL, 
-  PRIMARY KEY (Personid, 
-  Addressid, 
-  Address_typeid)
-) engine=InnoDB;
-
-CREATE TABLE Country (
-  id   int(10) NOT NULL AUTO_INCREMENT, 
-  name varchar(255) NOT NULL, 
-  CONSTRAINT id 
-    PRIMARY KEY (id), 
-  UNIQUE INDEX (id), 
-  UNIQUE INDEX (name)
-) engine=InnoDB;
-
-CREATE TABLE Address_type (
-  id    int(10) NOT NULL AUTO_INCREMENT, 
-  label varchar(50) NOT NULL, 
-  PRIMARY KEY (id), 
-  UNIQUE INDEX (id), 
-  UNIQUE INDEX (label)
-) engine=InnoDB;
-
-CREATE TABLE Town (
-  id          int(10) NOT NULL AUTO_INCREMENT, 
-  name        varchar(255) NOT NULL, 
-  postal_code varchar(255) NOT NULL, 
-  Countryid   int(10) NOT NULL, 
-  PRIMARY KEY (id), 
-  UNIQUE INDEX (id), 
-  UNIQUE INDEX (name), 
-  UNIQUE INDEX (postal_code)
-) engine=InnoDB;
+ALTER TABLE person_address ADD CONSTRAINT PersonID FOREIGN KEY (Personid) REFERENCES person(id);
+ALTER TABLE person_address ADD CONSTRAINT adresse_typeid FOREIGN KEY (Address_typeid) REFERENCES address_type(id);
+ALTER TABLE person_address ADD CONSTRAINT adressidfff FOREIGN KEY (Addressid) REFERENCES address(id);
+ALTER TABLE Address ADD CONSTRAINT Town_Add FOREIGN KEY (Townid) REFERENCES Town(id);
+ALTER TABLE Town ADD CONSTRAINT Country_Add FOREIGN KEY (Countryid) REFERENCES Country(id);
