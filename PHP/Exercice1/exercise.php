@@ -1,22 +1,22 @@
 <?php
 
-$booleanTrue;
-$booleanFalse;
+$booleanTrue=true;
+$booleanFalse=false;
 
-$int;
+$int=1;
 
-$float;
+$float=88.88;
 
-$integer;
+$integer=-88;
 
-$double;
+$double=12.5e11;
 
-$string;
+$string="string";
 
-$array;
+$array=['daniel','gabriel','ivan'];
 
-$doubleDimenssionArray;
+$doubleDimenssionArray=[['baby_array','inceptionarray']];
 
-$associativeArray;
+$associativeArray=["name"=>"gabriel"];
 
-$null;
+$null=null;
