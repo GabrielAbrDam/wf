@@ -4,6 +4,7 @@ function easterReverse($coucou){
     $fileContent = fread($fPath, filesize($coucou)); 
     $positionInitial = floor(strlen($fileContent)/2);
     fseek($fPath, $positionInitial, SEEK_SET);
+    
     $secondPart = fread($fPath, filesize($coucou));
     $reversedText = strrev($secondPart);
     
@@ -16,6 +17,3 @@ function easterReverse($coucou){
 
 
 
-//(strlen($fileContent) / 2
-//(strlen($fileContent) / 2;
-//$fseek($fPath, 0, SEEK_END)
