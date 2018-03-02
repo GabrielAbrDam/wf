@@ -1,5 +1,6 @@
 <?php
-function divide(int $value, int $par) : float{
+declare(strict_types =1);
+function divide(int $value, int $par) : float {
     if ($par == 0) {
         throw new RuntimeException('Division by 0 is not allowed');
     }
