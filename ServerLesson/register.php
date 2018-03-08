@@ -1,28 +1,33 @@
 <?php
-
-
-
-
-if($_SERVER['REQUEST_METHOD']==='POST'){
-    
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     $username = $_POST['username'] ?? null;
     $password_1 = $_POST['password_1'] ?? null;
     $password_2 = $_POST['password_2'] ?? null;
     $telephon = $_POST['telephon'] ?? null;
     
-    
     echo "Validate data" . "<br/>";
     $usernameSuccess = (is_string($username) && strlen($username) >= 2);
     $passwordSuccess = ($password_1 === $password_2 && strlen($password_1));
-    $telephonSuccess = (is_numeric($telephon) && strlen($telephon) >7);
+    $telephonSuccess = (is_numeric($telephon) && strlen($telephon) > 7);
     
-    if($usernameSuccess && $passwordSuccess && $telephonSuccess){
-        echo "Store Data ok" . "<br/>";
-    };
-    
-    // echo "if validate fail" . "<br/>";
+    if ($usernameSuccess && $passwordSuccess && $telephonSuccess) {
+        try {
+            $connection = new PDO('mysql:host=localhost;dbname=register', "root");
+        } catch (PDOException $exception) {
+            http_response_code(500);
+            echo "A problem occured, contact support";
+            exit(10);
+        }
+        $sql = "INSERT INTO user(username, password) VALUES (\"$username\", \"$password_1\")";
+        $connection->exec($sql);
+    }
+    ;
 }
+;
+
+// echo "if validate fail" . "<br/>";
+
 ?>
 
 <!DOCTYPE HTML>
@@ -33,18 +38,19 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
 		<style>
 		div{
 		color:red;
+		font-size: 60px;
 				  
 		}
-		
-		
+				
 		.bodyForm{
 		padding:50px;
 		margin: auto;
 		text-align : center;
+		border-radius:5px;
 		
 		width: 30%;
 		 background: linear-gradient(to bottom, #33ccff 0%, #006EC4 100%);
-		 box-shadow: 1px 1px 10px 0.3px #C9D4DC;
+		 box-shadow: 1px 1px 10px 1px #C9D4DC;
 		}
 		
 		button{
@@ -64,32 +70,52 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
 	<form action="/register.php" method="POST" >
 	
 		<label for="username">Your username:</label>
-		<input type="text" name="username" value="<?php echo htmlentities($username ?? "")?>" />
+		<input type="text" name="username" value="<?php
+
+echo htmlentities($username ?? "")?>" />
 		
 		<br/>
-		<?php if (!($usernameSuccess ?? true)){?>
+		<?php
+
+if (! ($usernameSuccess ?? true)) {
+    ?>
 		<div>
-			<p>You have an error into your username</p>
+			<p>You have an error into your username STUPID</p>
 		</div>
-		<?php }?>
+		<?php
+
+}
+?>
 		
 		<label for="telephone" > Telephon : </label>
 		<input type="tel" name="telephon">
-		<?php if (!($telephonSuccess ?? true)){?>
+		<?php
+
+if (! ($telephonSuccess ?? true)) {
+    ?>
 		<div>
-			<p> error Telephon</p>
+			<p> error Telephon you stupid</p>
 		</div>
-		<?php }?>
+		<?php
+
+}
+?>
 		<br/>
 		<label for="password_1">Your password:</label>
 		<input type="password" name="password_1"/>
 		
 		<br/>
-		<?php if (!($passwordSuccess ?? true)){?>
+		<?php
+
+if (! ($passwordSuccess ?? true)) {
+    ?>
 		<div>
-			<p>Error in your Password</p>
+			<p>you're an Error not only your Password</p>
 		</div>
-		<?php }?>
+		<?php
+
+}
+?>
 		<label for="password_2">Retype your password:</label>
 		<input type="password" name="password_2"/>
 		
