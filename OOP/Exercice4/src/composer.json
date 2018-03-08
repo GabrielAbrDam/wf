@@ -1,0 +1,22 @@
+{
+	"name" : "gabrielabrdam/exo_4",
+	"description" : "MyBigPackage",
+	"type" : "library",
+	"require" : {
+		"symfony/security" : "^4.0"
+	},
+	"license" : "MIT",
+	"authors" : [{
+			"name" : "GabrielAbrDam",
+			"email" : "gabriel.abreudamaso@gmail.com"
+		}
+	],
+	"autoload" : {
+		"psr-4" : {
+			"" : "",
+			"Model\\" : "Model/",
+			"Exception\\" : "Exception/"
+		}
+	},
+	"minimum-stability" : "dev"
+}
