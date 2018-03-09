@@ -20,7 +20,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit(10);
         }
         $sql = "INSERT INTO user(username, password) VALUES (\"$username\", \"$password_1\")";
-        $connection->exec($sql);
+        $affected = $connection->exec($sql);
+        // $id = $connection->lastInsertId();
+        if (! $affected) {
+            echo implode(',', $connection->errorInfo());
+        }
     }
     ;
 }
@@ -80,10 +84,9 @@ echo htmlentities($username ?? "")?>" />
 if (! ($usernameSuccess ?? true)) {
     ?>
 		<div>
-			<p>You have an error into your username STUPID</p>
+			<p>Error in your username STUPID</p>
 		</div>
 		<?php
-
 }
 ?>
 		
@@ -94,10 +97,9 @@ if (! ($usernameSuccess ?? true)) {
 if (! ($telephonSuccess ?? true)) {
     ?>
 		<div>
-			<p> error Telephon you stupid</p>
+			<p> error Telephon DICKHEAD</p>
 		</div>
 		<?php
-
 }
 ?>
 		<br/>
@@ -110,10 +112,9 @@ if (! ($telephonSuccess ?? true)) {
 if (! ($passwordSuccess ?? true)) {
     ?>
 		<div>
-			<p>you're an Error not only your Password</p>
+			<p>Error not only your Password, you're also a Error!</p>
 		</div>
 		<?php
-
 }
 ?>
 		<label for="password_2">Retype your password:</label>
