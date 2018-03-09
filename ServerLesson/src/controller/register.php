@@ -1,4 +1,7 @@
 <?php
+
+include_once __DIR__.'/init.php';
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     $username = $_POST['username'] ?? null;
@@ -13,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     if ($usernameSuccess && $passwordSuccess && $telephonSuccess) {
         try {
-            $connection = new PDO('mysql:host=localhost;dbname=register', "root");
+            $connection = Service\DBConnector::getConnection();
         } catch (PDOException $exception) {
             http_response_code(500);
             echo "A problem occured, contact support";

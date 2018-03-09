@@ -1,3 +1,7 @@
+<?php
+include __DIR__ . '/init.php'?>
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,7 +22,7 @@
            	<?php
         } else {
             try {
-                $connection = new PDO('mysql:localhost;dbname=register');
+                $connection = Service\DBConnector::getConnector();
             } catch (PDOException $exception) {
                 // if connectio fail display db driver error
                 http_response_code(500);
