@@ -1,6 +1,5 @@
 <?php
 
-include_once __DIR__.'/init.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
@@ -74,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	</head>
 	<body>
 	<section class="bodyForm">
-	<form action="/register.php" method="POST" >
+	<form action="/src/controller/register.php" method="POST" >
 	
 		<label for="username">Your username:</label>
 		<input type="text" name="username" value="<?php

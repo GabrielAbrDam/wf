@@ -1,0 +1,19 @@
+{
+    "name": "etudiant/server-lesson",
+    "description": "blabl",
+    "type": "project",
+    "license": "mit",
+    "authors": [
+        {
+            "name": "GabrielAbrDam",
+            "email": "gabriel.abreudamaso@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+    	"psr-4": {
+    		"": "src/"
+    	}
+    }
+}
